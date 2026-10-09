@@ -20,9 +20,21 @@ export interface Principle {
   body: string;
 }
 
+export interface Project {
+  name: string;
+  summary: string;
+  status: string;
+  url: string;
+  urlLabel: string;
+  image: { src: string; alt: string; width: number; height: number };
+  features: { heading: string; items: string[] };
+  engineering: { heading: string; items: string[] };
+  stack: string[];
+}
+
 export interface Content {
   meta: { title: string; description: string };
-  nav: { about: string; experience: string; approach: string; skills: string; contact: string };
+  nav: { about: string; experience: string; projects: string; approach: string; skills: string; contact: string };
   ui: {
     skip: string;
     navLabel: string;
@@ -31,10 +43,12 @@ export interface Content {
     themeToLight: string;
     themeToDark: string;
     present: string;
+    diagramLabel: string;
   };
   hero: { name: string; role: string; pitch: string; location: string };
   about: { heading: string; paragraphs: string[] };
   experience: { heading: string; forClient: string; roles: Role[] };
+  projects: { heading: string; intro: string; items: Project[] };
   approach: { heading: string; note: string; items: Principle[] };
   skills: { heading: string; groups: { name: string; items: string[] }[] };
   credentials: {
@@ -102,7 +116,7 @@ export const content: Record<Locale, Content> = {
       description:
         "C#/.NET developer with 6+ years of commercial experience in microservices, messaging, Azure and high-traffic cloud systems. Based in Warsaw.",
     },
-    nav: { about: "About", experience: "Experience", approach: "How I build", skills: "Skills", contact: "Contact" },
+    nav: { about: "About", experience: "Experience", projects: "Projects", approach: "How I build", skills: "Skills", contact: "Contact" },
     ui: {
       skip: "Skip to content",
       navLabel: "Sections",
@@ -111,6 +125,7 @@ export const content: Record<Locale, Content> = {
       themeToLight: "Switch to light theme",
       themeToDark: "Switch to dark theme",
       present: "Present",
+      diagramLabel: "Animation: an API publishes messages to RabbitMQ, which delivers them to two consumers.",
     },
     hero: {
       name: "Adam Gajek",
@@ -124,7 +139,7 @@ export const content: Record<Locale, Content> = {
       paragraphs: [
         "For more than six years I have built commercial software in very different settings: a microservice platform for industrial automation, a cloud system serving over 14.5 million views a month, distributed services for a North American logistics company, and the C++ billing system where I started.",
         "Most of my work sits behind the API. Service boundaries, message flows over RabbitMQ and Kafka, relational and document storage, caching, containers and the pipelines that ship them. I aim for systems that are easy to change and uneventful to run.",
-        "I use Claude Code, GitHub Copilot and Codex every day and hold Anthropic’s certifications in Claude Code and the Claude API. The tools make me faster; design decisions and code review stay with me.",
+        "I use Claude Code, GitHub Copilot and Codex every day and hold Anthropic’s certifications in Claude Code and the Claude API. The tools make me faster; design decisions and code review stay with me. After hours I build Studio, my own SaaS for dance schools, from the database to production.",
       ],
     },
     experience: {
@@ -178,6 +193,49 @@ export const content: Record<Locale, Content> = {
             "Optimised existing code and proposed technical improvements.",
           ],
           stack: STACK.accenture,
+        },
+      ],
+    },
+    projects: {
+      heading: "Projects",
+      intro: "What I build on my own: product, architecture, code and operations end to end.",
+      items: [
+        {
+          name: "Studio",
+          summary:
+            "Free scheduling and booking software for dance schools and independent instructors. Schools publish a timetable, sell passes online and take bookings from one link.",
+          status: "Live, built and run by me since 2026",
+          url: "https://studio-app.click/en/",
+          urlLabel: "Open studio-app.click",
+          image: {
+            src: "/projects/studio-en.webp",
+            alt: "Studio landing page: “Your dance school. All in one place.” next to a sample weekly class schedule.",
+            width: 1800,
+            height: 1025,
+          },
+          features: {
+            heading: "What it does",
+            items: [
+              "Timetable with rooms, instructors, weekly cycles and collision checks.",
+              "Online class booking and room rental from a single school link.",
+              "Waitlist that books the first eligible person when a seat frees up.",
+              "Partner classes with lead and follow limits, and booking with your own partner.",
+              "Passes paid by card or BLIK through Stripe, with money going straight to the school.",
+              "Team roles, attendance, refunds, audit log and CSV export. Available in Polish, English, German and French.",
+            ],
+          },
+          engineering: {
+            heading: "Under the hood",
+            items: [
+              "ASP.NET Core 10 API with ProblemDetails, rate limiting and OpenAPI; the TypeScript client types are generated from the contract.",
+              "Multi-tenant PostgreSQL: row-level security keeps each school’s data separate, with EF Core, Npgsql and versioned SQL migrations.",
+              "Transactional outbox feeding a durable email queue with retries and send limits.",
+              "Supabase Auth with Google sign-in, Stripe Connect for payments, Resend for email.",
+              "React 19, TypeScript, Vite and TanStack Query on the front end.",
+              "Dockerised API on Render, front end on Cloudflare Pages, GitHub Actions CI with integration tests and a daily health check.",
+            ],
+          },
+          stack: [".NET 10", "ASP.NET Core", "EF Core", "PostgreSQL", "Supabase", "React", "TypeScript", "Stripe Connect", "Docker", "Cloudflare Pages", "GitHub Actions"],
         },
       ],
     },
@@ -242,7 +300,7 @@ export const content: Record<Locale, Content> = {
       description:
         "Programista C#/.NET z ponad 6-letnim doświadczeniem komercyjnym: mikroserwisy, messaging, Azure i systemy chmurowe o dużym ruchu. Warszawa.",
     },
-    nav: { about: "O mnie", experience: "Doświadczenie", approach: "Jak pracuję", skills: "Umiejętności", contact: "Kontakt" },
+    nav: { about: "O mnie", experience: "Doświadczenie", projects: "Projekty", approach: "Jak pracuję", skills: "Umiejętności", contact: "Kontakt" },
     ui: {
       skip: "Przejdź do treści",
       navLabel: "Sekcje",
@@ -251,6 +309,7 @@ export const content: Record<Locale, Content> = {
       themeToLight: "Włącz jasny motyw",
       themeToDark: "Włącz ciemny motyw",
       present: "obecnie",
+      diagramLabel: "Animacja: API publikuje wiadomości do RabbitMQ, który dostarcza je do dwóch konsumentów.",
     },
     hero: {
       name: "Adam Gajek",
@@ -264,7 +323,7 @@ export const content: Record<Locale, Content> = {
       paragraphs: [
         "Od ponad sześciu lat tworzę oprogramowanie komercyjne w bardzo różnych środowiskach: platformę mikroserwisową dla automatyki przemysłowej, system chmurowy obsługujący ponad 14,5 mln wyświetleń miesięcznie, rozproszone usługi dla północnoamerykańskiej firmy logistycznej i system bilingowy w C++, od którego zaczynałem.",
         "Większość mojej pracy dzieje się za API. Granice serwisów, przepływ wiadomości przez RabbitMQ i Kafkę, bazy relacyjne i dokumentowe, cache, kontenery i pipeline’y, które to wszystko wdrażają. Zależy mi na systemach, które łatwo zmieniać i które spokojnie działają na produkcji.",
-        "Na co dzień korzystam z Claude Code, GitHub Copilot i Codex, mam certyfikaty Anthropic z Claude Code i Claude API. Narzędzia przyspieszają pracę; decyzje projektowe i code review zostają po mojej stronie.",
+        "Na co dzień korzystam z Claude Code, GitHub Copilot i Codex, mam certyfikaty Anthropic z Claude Code i Claude API. Narzędzia przyspieszają pracę; decyzje projektowe i code review zostają po mojej stronie. Po godzinach rozwijam Studio, własny SaaS dla szkół tańca, od bazy danych po produkcję.",
       ],
     },
     experience: {
@@ -318,6 +377,49 @@ export const content: Record<Locale, Content> = {
             "Optymalizowałem istniejący kod i proponowałem usprawnienia techniczne.",
           ],
           stack: STACK.accenture,
+        },
+      ],
+    },
+    projects: {
+      heading: "Projekty",
+      intro: "To, co buduję samodzielnie: produkt, architektura, kod i utrzymanie od początku do końca.",
+      items: [
+        {
+          name: "Studio",
+          summary:
+            "Bezpłatny program do grafiku i zapisów dla szkół tańca i samodzielnych instruktorów. Szkoła publikuje grafik, sprzedaje karnety online i przyjmuje zapisy z jednego linku.",
+          status: "Działa produkcyjnie, buduję i utrzymuję go od 2026 roku",
+          url: "https://studio-app.click/",
+          urlLabel: "Otwórz studio-app.click",
+          image: {
+            src: "/projects/studio-pl.webp",
+            alt: "Strona główna Studio: „Zarządzaj szkołą tańca. W jednym miejscu.” obok przykładowego grafiku zajęć.",
+            width: 1800,
+            height: 1025,
+          },
+          features: {
+            heading: "Co robi",
+            items: [
+              "Grafik z salami, instruktorami, cyklami tygodniowymi i kontrolą kolizji.",
+              "Zapisy na zajęcia i wynajem sal online z jednego linku szkoły.",
+              "Lista rezerwowa, która zapisuje pierwszą uprawnioną osobę, gdy zwolni się miejsce.",
+              "Zajęcia w parach z limitami ról prowadzących i prowadzonych oraz zapisem z własnym partnerem.",
+              "Karnety opłacane kartą lub BLIK-iem przez Stripe; pieniądze trafiają prosto do szkoły.",
+              "Role w zespole, obecności, zwroty, dziennik audytu i eksport CSV. Interfejs po polsku, angielsku, niemiecku i francusku.",
+            ],
+          },
+          engineering: {
+            heading: "Pod maską",
+            items: [
+              "API w ASP.NET Core 10 z ProblemDetails, rate limitingiem i OpenAPI; typy klienta TypeScript generowane z kontraktu.",
+              "Wielodostępny PostgreSQL: row-level security oddziela dane każdej szkoły; EF Core, Npgsql i wersjonowane migracje SQL.",
+              "Transakcyjny outbox zasilający trwałą kolejkę maili z ponowieniami i limitami wysyłki.",
+              "Supabase Auth z logowaniem Google, Stripe Connect do płatności, Resend do poczty.",
+              "Frontend w React 19, TypeScript, Vite i TanStack Query.",
+              "API w Dockerze na Render, frontend na Cloudflare Pages, CI w GitHub Actions z testami integracyjnymi i codziennym health checkiem.",
+            ],
+          },
+          stack: [".NET 10", "ASP.NET Core", "EF Core", "PostgreSQL", "Supabase", "React", "TypeScript", "Stripe Connect", "Docker", "Cloudflare Pages", "GitHub Actions"],
         },
       ],
     },

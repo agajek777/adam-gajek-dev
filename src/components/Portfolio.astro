@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Icon from "./Icon.astro";
+import MessageFlow from "./MessageFlow.astro";
 import { content, EMAIL, GITHUB, LINKEDIN, type Locale } from "../i18n/content";
 
 interface Props {
@@ -15,6 +16,7 @@ const otherLang = locale === "en" ? "pl" : "en";
 const sections = [
   { id: "about", label: t.nav.about },
   { id: "experience", label: t.nav.experience },
+  { id: "projects", label: t.nav.projects },
   { id: "approach", label: t.nav.approach },
   { id: "skills", label: t.nav.skills },
   { id: "contact", label: t.nav.contact },
@@ -23,6 +25,7 @@ const sections = [
 
 <Base locale={locale} title={t.meta.title} description={t.meta.description}>
   <a class="skip-link" href="#content">{t.ui.skip}</a>
+  <div class="spotlight" aria-hidden="true"></div>
 
   <div class="shell">
     <header class="intro">
@@ -31,7 +34,11 @@ const sections = [
         <p class="tagline" data-enter style="--i: 1">{t.hero.role}</p>
         <p class="pitch" data-enter style="--i: 2">{t.hero.pitch}</p>
 
-        <nav class="toc" aria-label={t.ui.navLabel} data-enter style="--i: 3">
+        <div class="flow-wrap" data-enter style="--i: 3">
+          <MessageFlow label={t.ui.diagramLabel} />
+        </div>
+
+        <nav class="toc" aria-label={t.ui.navLabel} data-enter style="--i: 4">
           <ul>
             {
               sections.map((s) => (
@@ -47,7 +54,7 @@ const sections = [
         </nav>
       </div>
 
-      <div class="intro-foot" data-enter style="--i: 4">
+      <div class="intro-foot" data-enter style="--i: 5">
         <ul class="socials">
           <li>
             <a href={GITHUB} rel="me noopener" target="_blank" aria-label="GitHub">
@@ -97,7 +104,7 @@ const sections = [
         <ol class="roles">
           {
             t.experience.roles.map((r) => (
-              <li class="role">
+              <li class="role" data-reveal>
                 <p class="role-period">
                   <time datetime={r.start}>{r.period.split(" – ")[0]}</time> –{" "}
                   {r.end ? <time datetime={r.end}>{r.period.split(" – ")[1]}</time> : <span>{r.period.split(" – ")[1]}</span>}
@@ -132,13 +139,72 @@ const sections = [
         </ol>
       </section>
 
+      <section id="projects" class="section" aria-labelledby="projects-h">
+        <h2 id="projects-h" class="section-title">{t.projects.heading}</h2>
+        <p class="section-note">{t.projects.intro}</p>
+        {
+          t.projects.items.map((p) => (
+            <article class="project" data-reveal>
+              <a class="project-shot" href={p.url} target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+                <img
+                  src={p.image.src}
+                  alt=""
+                  width={p.image.width}
+                  height={p.image.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <div class="project-head">
+                <h3 class="project-name">{p.name}</h3>
+                <p class="project-status">
+                  <span class="live-dot" aria-hidden="true" />
+                  {p.status}
+                </p>
+              </div>
+              <p class="project-summary">{p.summary}</p>
+              <p class="visually-hidden">{p.image.alt}</p>
+              <div class="project-cols">
+                <div>
+                  <h4 class="project-sub">{p.features.heading}</h4>
+                  <ul class="role-points">
+                    {p.features.items.map((i) => (
+                      <li>{i}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="project-sub">{p.engineering.heading}</h4>
+                  <ul class="role-points">
+                    {p.engineering.items.map((i) => (
+                      <li>{i}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <ul class="tags" aria-label="Stack">
+                {p.stack.map((s) => (
+                  <li>{s}</li>
+                ))}
+              </ul>
+              <p class="project-actions">
+                <a class="btn btn-primary magnetic" href={p.url} target="_blank" rel="noopener">
+                  <span>{p.urlLabel}</span>
+                  <Icon name="arrowUpRight" />
+                </a>
+              </p>
+            </article>
+          ))
+        }
+      </section>
+
       <section id="approach" class="section" aria-labelledby="approach-h">
         <h2 id="approach-h" class="section-title">{t.approach.heading}</h2>
         <p class="section-note">{t.approach.note}</p>
         <div class="principles">
           {
-            t.approach.items.map((item) => (
-              <article class="principle">
+            t.approach.items.map((item, i) => (
+              <article class="principle" data-reveal style={`--d: ${i * 80}ms`}>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
               </article>
@@ -152,7 +218,7 @@ const sections = [
         <dl class="skills">
           {
             t.skills.groups.map((g) => (
-              <div class="skill-row">
+              <div class="skill-row" data-reveal>
                 <dt>{g.name}</dt>
                 <dd>
                   <ul class="tags">
@@ -167,7 +233,7 @@ const sections = [
         </dl>
 
         <h2 class="section-title section-title--sub">{t.credentials.heading}</h2>
-        <div class="credentials">
+        <div class="credentials" data-reveal>
           <div>
             <h3 class="cred-title">{t.credentials.certsHeading}</h3>
             <ul class="cred-list">
@@ -213,14 +279,14 @@ const sections = [
         </div>
       </section>
 
-      <section id="contact" class="section contact" aria-labelledby="contact-h">
+      <section id="contact" class="section contact" aria-labelledby="contact-h" data-reveal>
         <h2 id="contact-h" class="contact-title">{t.contact.heading}</h2>
         <p class="contact-body">{t.contact.body}</p>
         <p class="contact-email">
           <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
         </p>
         <div class="actions">
-          <a class="btn btn-primary" href={`mailto:${EMAIL}`}>
+          <a class="btn btn-primary magnetic" href={`mailto:${EMAIL}`}>
             <Icon name="envelope" />
             <span>{t.contact.email}</span>
           </a>
