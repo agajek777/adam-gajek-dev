@@ -280,6 +280,55 @@ main {
   }
 }
 
+/* Phones and tablets: the intro is its own first screen. Controls sit on top,
+   the name block in the upper third, the section index closes the screen. */
+@media (max-width: 63.99rem) {
+  .intro {
+    min-height: 100svh;
+    padding-block: 1rem 2.5rem;
+    gap: 0;
+  }
+
+  .intro-foot {
+    order: -1;
+  }
+
+  .intro-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name {
+    padding-top: clamp(2.5rem, 12svh, 7rem);
+    font-size: clamp(3rem, 12.5vw, 4.5rem);
+  }
+
+  .tagline {
+    margin-top: 1rem;
+    font-size: 1.1875rem;
+  }
+
+  .toc {
+    display: block;
+    margin-top: auto;
+    padding-top: 2.5rem;
+  }
+
+  .toc ul {
+    gap: 0;
+  }
+
+  .toc a {
+    min-height: 2.75rem;
+    font-size: 1rem;
+  }
+
+  .toc-line {
+    width: 2.5rem;
+  }
+}
+
 .intro-foot {
   display: flex;
   align-items: center;
