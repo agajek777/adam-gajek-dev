@@ -30,9 +30,11 @@ if (themeButton) {
   });
 }
 
-// Mark the nav link of the section currently in the reading zone.
+// Mark the nav link of the section currently in the reading zone. Only the desktop
+// layout keeps the menu on screen while scrolling; on phones it is a static index.
 const navLinks = new Map<string, HTMLAnchorElement>();
 document.querySelectorAll<HTMLAnchorElement>("[data-nav]").forEach((a) => navLinks.set(a.dataset.nav!, a));
+const stickyNav = window.matchMedia("(min-width: 64rem)");
 
 if (navLinks.size > 0) {
   const visible = new Set<string>();
@@ -41,13 +43,14 @@ if (navLinks.size > 0) {
 
   const update = () => {
     // The last section is too short to reach the reading zone, so the page end activates it.
-    const id = endReached ? order.at(-1) : order.find((key) => visible.has(key));
-    if (!id) return; // Between sections: keep the previous marker.
+    const id = stickyNav.matches ? (endReached ? order.at(-1) : order.find((key) => visible.has(key))) : undefined;
+    if (stickyNav.matches && !id) return; // Between sections: keep the previous marker.
     navLinks.forEach((a, key) => {
       if (key === id) a.setAttribute("aria-current", "true");
       else a.removeAttribute("aria-current");
     });
   };
+  stickyNav.addEventListener("change", update);
 
   const sectionObserver = new IntersectionObserver(
     (entries) => {

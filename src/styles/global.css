@@ -993,8 +993,9 @@ html:not(.js) .role::before {
   margin-top: 0.5rem;
 }
 
-/* ---------- Scroll reveal (only when JS runs) ---------- */
-@media (prefers-reduced-motion: no-preference) {
+/* ---------- Scroll reveal (desktop only, when JS runs) ----------
+   On phones content is always visible: entrance motion while flick-scrolling feels choppy. */
+@media (prefers-reduced-motion: no-preference) and (min-width: 64rem) {
   html.js [data-reveal] {
     opacity: 0;
     transform: translateY(18px);
@@ -1005,7 +1006,7 @@ html:not(.js) .role::before {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) and (min-width: 64rem) {
   html.js [data-reveal] {
     opacity: 0;
     transition: opacity 300ms ease;
