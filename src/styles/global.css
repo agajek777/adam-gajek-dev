@@ -3,6 +3,11 @@
   --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  /* Scroll-linked motion: spread over the range so the arrival stays visible. */
+  --ease-scroll: cubic-bezier(0.3, 0.55, 0.4, 1);
+  /* Scroll-driven rules use var() easings on purpose: with literal values the CSS
+     minifier folds animation-timeline into the animation shorthand, which browsers reject. */
+  --linear: linear;
 
   --space-section: 6.5rem;
   --radius-pill: 999px;
@@ -491,7 +496,7 @@ main {
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .roles::after {
-      animation: rail linear both;
+      animation: rail var(--linear) both;
       animation-timeline: view();
       animation-range: entry 10% cover 65%;
     }
@@ -879,7 +884,7 @@ html:not(.js) .role::before {
 
 .project-shot {
   display: block;
-  overflow: hidden;
+  overflow: clip; /* not hidden: a scroll container would freeze the image's view() timeline */
   border-radius: 14px;
   background: var(--surface);
   box-shadow: 0 16px 32px -20px var(--shadow);
@@ -993,35 +998,157 @@ html:not(.js) .role::before {
   margin-top: 0.5rem;
 }
 
-/* ---------- Scroll reveal (desktop only, when JS runs) ----------
-   On phones content is always visible: entrance motion while flick-scrolling feels choppy. */
-@media (prefers-reduced-motion: no-preference) and (min-width: 64rem) {
-  html.js [data-reveal] {
+/* ---------- Scroll motion ----------
+   Where supported, reveals are tied to scroll position (compositor-driven, no lag on
+   touch): each block finishes arriving ~300px after its top edge enters the screen.
+   Older browsers get a time-based fallback triggered by the IntersectionObserver. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* A block finishes arriving when its top edge reaches the middle of the screen,
+       so the motion happens where the reader is looking. */
+    [data-reveal],
+    .section-title,
+    .section-note,
+    .prose > p {
+      animation: reveal-up var(--ease-scroll) both;
+      animation-timeline: view();
+      animation-range: entry 6vh entry 50vh;
+    }
+
+    .section-title {
+      animation-name: reveal-title;
+      animation-range: entry 6vh entry 42vh;
+    }
+
+    .contact-title {
+      animation: reveal-title var(--ease-scroll) both;
+      animation-timeline: view();
+      animation-range: entry 6vh entry 46vh;
+    }
+
+    /* The project screenshot settles from slightly smaller while the image inside drifts. */
+    .project-shot {
+      animation: settle var(--ease-scroll) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+
+    .project-shot img {
+      animation: drift var(--linear) both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+
+    /* Reading progress hairline along the top edge. */
+    .progress {
+      animation: progress var(--linear) both;
+      animation-timeline: scroll(root);
+    }
+  }
+
+  @supports not (animation-timeline: view()) {
+    html.js [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 800ms var(--ease-out),
+        transform 1000ms var(--ease-out);
+    }
+
+    html.js [data-reveal].is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Technology tags drop in one after another once their row is on screen. */
+  html.js .tags li {
+    opacity: 0;
+    translate: 0 8px;
+    scale: 0.96;
+    transition:
+      opacity 500ms var(--ease-out),
+      translate 600ms var(--ease-out),
+      scale 600ms var(--ease-out);
+    transition-delay: calc(var(--n, 0) * 35ms + 80ms);
+  }
+
+  html.js .tags.is-visible li {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+.progress {
+  transform: scaleX(0);
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 5;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+@keyframes reveal-title {
+  from {
     opacity: 0;
     transform: translateY(18px);
-    transition:
-      opacity 700ms var(--ease-out),
-      transform 900ms var(--ease-out);
-    transition-delay: var(--d, 0ms);
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 -20% 0);
   }
 }
 
-@media (prefers-reduced-motion: reduce) and (min-width: 64rem) {
-  html.js [data-reveal] {
-    opacity: 0;
-    transition: opacity 300ms ease;
+@keyframes settle {
+  from {
+    scale: 0.9;
+    opacity: 0.4;
   }
 }
 
-html.js [data-reveal].is-visible {
-  opacity: 1;
-  transform: none;
+@keyframes drift {
+  from {
+    translate: 0 -3%;
+    scale: 1.08;
+  }
+  to {
+    translate: 0 3%;
+    scale: 1.08;
+  }
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 @media print {
-  html.js [data-reveal] {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+
+  html.js [data-reveal],
+  html.js .tags li {
     opacity: 1;
     transform: none;
+    translate: none;
+    scale: none;
   }
 }
 

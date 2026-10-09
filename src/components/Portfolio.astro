@@ -23,6 +23,7 @@ const sections = [
 
 <Base locale={locale} title={t.meta.title} description={t.meta.description}>
   <a class="skip-link" href="#content">{t.ui.skip}</a>
+  <div class="progress" aria-hidden="true"></div>
 
   <div class="shell">
     <header class="intro">
@@ -121,8 +122,8 @@ const sections = [
                     ))}
                   </ul>
                   <ul class="tags" aria-label="Stack">
-                    {r.stack.map((s) => (
-                      <li>{s}</li>
+                    {r.stack.map((s, i) => (
+                      <li style={`--n: ${i}`}>{s}</li>
                     ))}
                   </ul>
                 </div>
@@ -176,8 +177,8 @@ const sections = [
                 </div>
               </div>
               <ul class="tags" aria-label="Stack">
-                {p.stack.map((s) => (
-                  <li>{s}</li>
+                {p.stack.map((s, i) => (
+                  <li style={`--n: ${i}`}>{s}</li>
                 ))}
               </ul>
               <p class="project-actions">
@@ -200,8 +201,8 @@ const sections = [
                 <dt>{g.name}</dt>
                 <dd>
                   <ul class="tags">
-                    {g.items.map((s) => (
-                      <li>{s}</li>
+                    {g.items.map((s, i) => (
+                      <li style={`--n: ${i}`}>{s}</li>
                     ))}
                   </ul>
                 </dd>

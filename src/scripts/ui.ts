@@ -104,8 +104,9 @@ if (copyButton) {
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
-// Reveal content once as it scrolls into view.
-const revealed = document.querySelectorAll<HTMLElement>("[data-reveal]");
+// Mark blocks and tag rows once they are well inside the viewport. Drives the timeline
+// dots, the tag stagger, and the reveal fallback where scroll-driven animations are missing.
+const revealed = document.querySelectorAll<HTMLElement>("[data-reveal], .tags");
 const revealObserver = new IntersectionObserver(
   (entries) => {
     for (const e of entries) {
@@ -114,7 +115,7 @@ const revealObserver = new IntersectionObserver(
       revealObserver.unobserve(e.target);
     }
   },
-  { rootMargin: "0px 0px -12% 0px" },
+  { rootMargin: "0px 0px -18% 0px" },
 );
 revealed.forEach((el) => revealObserver.observe(el));
 
