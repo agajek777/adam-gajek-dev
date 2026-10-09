@@ -84,10 +84,10 @@ const SKILLS_EN = [
 const SKILLS_PL = [
   { name: "Backend", items: ["C#", ".NET", "Entity Framework", "Dapper", "Domain-Driven Design"] },
   { name: "Dane i cache", items: ["PostgreSQL", "SQL Server", "MongoDB", "Redis", "HybridCache"] },
-  { name: "Messaging", items: ["RabbitMQ", "Kafka"] },
+  { name: "Kolejki wiadomości", items: ["RabbitMQ", "Kafka"] },
   { name: "Chmura i wdrożenia", items: ["Azure", "Docker", "Kubernetes", "CI/CD", "Azure DevOps"] },
   { name: "Architektura", items: ["Mikroserwisy", "Systemy rozproszone", "Modularny monolit"] },
-  { name: "Praca z AI", items: ["Claude Code", "GitHub Copilot", "Codex"] },
+  { name: "AI w programowaniu", items: ["Claude Code", "GitHub Copilot", "Codex"] },
   { name: "Narzędzia", items: ["Git", "GitHub", "GitLab", "Jira"] },
 ];
 
@@ -266,9 +266,9 @@ export const content: Record<Locale, Content> = {
 
   pl: {
     meta: {
-      title: "Adam Gajek, .NET Developer: chmura i systemy rozproszone",
+      title: "Adam Gajek – .NET Developer, chmura i systemy rozproszone",
       description:
-        "Programista C#/.NET z ponad 6-letnim doświadczeniem komercyjnym: mikroserwisy, messaging, Azure i systemy chmurowe o dużym ruchu. Warszawa.",
+        "Programista C#/.NET z ponad sześcioletnim doświadczeniem komercyjnym. Mikroserwisy, kolejki wiadomości, Azure i systemy chmurowe o dużym ruchu. Warszawa.",
     },
     nav: { about: "O mnie", experience: "Doświadczenie", projects: "Projekty", skills: "Umiejętności", contact: "Kontakt" },
     ui: {
@@ -282,17 +282,17 @@ export const content: Record<Locale, Content> = {
     },
     hero: {
       name: "Adam Gajek",
-      role: ".NET Developer, chmura i systemy rozproszone",
+      role: ".NET Developer – chmura i systemy rozproszone",
       pitch:
-        "Buduję backendy w .NET dla systemów rozproszonych: mikroserwisy, messaging, dane i infrastrukturę chmurową, na której działają.",
+        "Tworzę backend w .NET dla systemów rozproszonych: mikroserwisy, komunikację przez kolejki, warstwę danych i infrastrukturę chmurową, na której to wszystko działa.",
       location: "Warszawa",
     },
     about: {
       heading: "O mnie",
       paragraphs: [
-        "Od ponad sześciu lat tworzę oprogramowanie komercyjne w bardzo różnych środowiskach: platformę mikroserwisową dla automatyki przemysłowej, system chmurowy obsługujący ponad 14,5 mln wyświetleń miesięcznie, rozproszone usługi dla północnoamerykańskiej firmy logistycznej i system bilingowy w C++, od którego zaczynałem.",
-        "Większość mojej pracy dzieje się za API. Granice serwisów, przepływ wiadomości przez RabbitMQ i Kafkę, bazy relacyjne i dokumentowe, cache, kontenery i pipeline’y, które to wszystko wdrażają. Zależy mi na systemach, które łatwo zmieniać i które spokojnie działają na produkcji.",
-        "Na co dzień korzystam z Claude Code, GitHub Copilot i Codex, mam certyfikaty Anthropic z Claude Code i Claude API. Narzędzia przyspieszają pracę; decyzje projektowe i code review zostają po mojej stronie. Po godzinach rozwijam Studio, własny SaaS dla szkół tańca, od bazy danych po produkcję.",
+        "Od ponad sześciu lat zawodowo tworzę oprogramowanie w bardzo różnych projektach. Rozwijam platformę mikroserwisową dla automatyki przemysłowej, pracowałem też nad systemem chmurowym z ponad 14,5 mln wyświetleń miesięcznie i nad rozproszonymi usługami dla północnoamerykańskiej firmy logistycznej. Zaczynałem od systemu bilingowego w C++.",
+        "Zajmuję się głównie tym, co dzieje się za API: granicami serwisów, przepływem wiadomości przez RabbitMQ i Kafkę, bazami relacyjnymi i dokumentowymi, cache’em, kontenerami oraz pipeline’ami, które to wszystko wdrażają. Stawiam na systemy, które łatwo rozwijać i które działają na produkcji bez niespodzianek.",
+        "Na co dzień pracuję z Claude Code, GitHub Copilotem i Codexem, mam też certyfikaty Anthropic z Claude Code i Claude API. Te narzędzia przyspieszają moją pracę, ale decyzje projektowe i code review należą do mnie. Po godzinach rozwijam Studio, własny SaaS dla szkół tańca, od bazy danych aż po produkcję.",
       ],
     },
     experience: {
@@ -306,8 +306,8 @@ export const content: Record<Locale, Content> = {
           company: "Alten",
           client: "Emerson",
           points: [
-            "Rozwijam i utrzymuję system oparty na mikroserwisach dla domeny automatyki przemysłowej, na nowoczesnym .NET (obecnie .NET 10).",
-            "Pracuję z bazami relacyjnymi i NoSQL, komunikacją między serwisami, konteneryzacją, kontrolą wersji i automatycznymi pipeline’ami wdrożeniowymi.",
+            "Rozwijam i utrzymuję system oparty na mikroserwisach dla branży automatyki przemysłowej, napisany w nowoczesnym .NET (obecnie .NET 10).",
+            "Na co dzień pracuję z bazami relacyjnymi i NoSQL, komunikacją między serwisami, kontenerami, systemem kontroli wersji i automatycznymi pipeline’ami CI/CD.",
           ],
           stack: STACK.alten,
         },
@@ -318,8 +318,8 @@ export const content: Record<Locale, Content> = {
           title: ".NET Developer",
           company: "YourITeams",
           points: [
-            "Rozwijałem system chmurowy o dużym ruchu, obsługujący ponad 14,5 mln wyświetleń miesięcznie.",
-            "Pracowałem w środowisku Azure: Kubernetes (AKS), rejestr kontenerów, hosting w App Service, Azure SQL i cache w Redisie.",
+            "Rozwijałem system chmurowy o dużym ruchu, który obsługuje ponad 14,5 mln wyświetleń miesięcznie.",
+            "Pracowałem w środowisku Azure: Kubernetes (AKS), Azure Container Registry, App Service, Azure SQL i Redis jako cache.",
           ],
           stack: STACK.youriteams,
         },
@@ -330,8 +330,8 @@ export const content: Record<Locale, Content> = {
           title: "Software Engineer .NET",
           company: "C.H. Robinson",
           points: [
-            "Tworzyłem nowe rozwiązania dla chmurowych, rozproszonych systemów opartych na mikroserwisach, z Kafką do strumieniowania zdarzeń.",
-            "Na co dzień współpracowałem z zespołem inżynierów z Ameryki Północnej w międzynarodowym środowisku.",
+            "Tworzyłem nowe rozwiązania w chmurowych systemach rozproszonych opartych na mikroserwisach, z Kafką do strumieniowania zdarzeń.",
+            "Na co dzień pracowałem w międzynarodowym zespole, razem z inżynierami z Ameryki Północnej.",
           ],
           stack: STACK.chr,
         },
@@ -342,7 +342,7 @@ export const content: Record<Locale, Content> = {
           title: "Junior C++ Developer",
           company: "Accenture",
           points: [
-            "Rozwijałem i utrzymywałem system bilingowy, od analizy wymagań przez implementację po testy.",
+            "Rozwijałem i utrzymywałem system bilingowy: od analizy wymagań, przez implementację, po testy.",
             "Optymalizowałem istniejący kod i proponowałem usprawnienia techniczne.",
           ],
           stack: STACK.accenture,
@@ -351,13 +351,13 @@ export const content: Record<Locale, Content> = {
     },
     projects: {
       heading: "Projekty",
-      intro: "To, co buduję samodzielnie: produkt, architektura, kod i utrzymanie od początku do końca.",
+      intro: "Projekty, które prowadzę sam: od pomysłu i architektury, przez kod, po utrzymanie.",
       items: [
         {
           name: "Studio",
           summary:
-            "Bezpłatny program do grafiku i zapisów dla szkół tańca i samodzielnych instruktorów. Szkoła publikuje grafik, sprzedaje karnety online i przyjmuje zapisy z jednego linku.",
-          status: "Działa produkcyjnie, buduję i utrzymuję go od 2026 roku",
+            "Bezpłatna aplikacja do grafiku i zapisów dla szkół tańca i samodzielnych instruktorów. Szkoła publikuje grafik, sprzedaje karnety online i przyjmuje zapisy przez jeden link.",
+          status: "Działa na produkcji, rozwijam go od 2026 roku",
           url: "https://studio-app.click/",
           urlLabel: "Otwórz studio-app.click",
           image: {
@@ -369,23 +369,23 @@ export const content: Record<Locale, Content> = {
           features: {
             heading: "Co robi",
             items: [
-              "Grafik z salami, instruktorami, cyklami tygodniowymi i kontrolą kolizji.",
-              "Zapisy na zajęcia i wynajem sal online z jednego linku szkoły.",
-              "Lista rezerwowa, która zapisuje pierwszą uprawnioną osobę, gdy zwolni się miejsce.",
-              "Zajęcia w parach z limitami ról prowadzących i prowadzonych oraz zapisem z własnym partnerem.",
-              "Karnety opłacane kartą lub BLIK-iem przez Stripe; pieniądze trafiają prosto do szkoły.",
-              "Role w zespole, obecności, zwroty, dziennik audytu i eksport CSV. Interfejs po polsku, angielsku, niemiecku i francusku.",
+              "Grafik z salami, instruktorami, zajęciami cyklicznymi i wykrywaniem kolizji.",
+              "Zapisy na zajęcia i rezerwacja sal online przez jeden link szkoły.",
+              "Lista rezerwowa: gdy zwolni się miejsce, Studio samo zapisuje pierwszą uprawnioną osobę.",
+              "Zajęcia w parach z limitami ról prowadzących i prowadzonych oraz możliwością zapisu z własnym partnerem.",
+              "Karnety płatne kartą lub BLIK-iem przez Stripe; pieniądze trafiają bezpośrednio do szkoły.",
+              "Role w zespole, lista obecności, zwroty, dziennik zdarzeń i eksport do CSV. Interfejs w czterech językach: polskim, angielskim, niemieckim i francuskim.",
             ],
           },
           engineering: {
             heading: "Pod maską",
             items: [
-              "API w ASP.NET Core 10 z ProblemDetails, rate limitingiem i OpenAPI; typy klienta TypeScript generowane z kontraktu.",
-              "Wielodostępny PostgreSQL: row-level security oddziela dane każdej szkoły; EF Core, Npgsql i wersjonowane migracje SQL.",
-              "Transakcyjny outbox zasilający trwałą kolejkę maili z ponowieniami i limitami wysyłki.",
-              "Supabase Auth z logowaniem Google, Stripe Connect do płatności, Resend do poczty.",
-              "Frontend w React 19, TypeScript, Vite i TanStack Query.",
-              "API w Dockerze na Render, frontend na Cloudflare Pages, CI w GitHub Actions z testami integracyjnymi i codziennym health checkiem.",
+              "API w ASP.NET Core 10 z ProblemDetails, rate limitingiem i OpenAPI; typy TypeScript dla frontendu są generowane z kontraktu.",
+              "PostgreSQL w modelu multi-tenant: row-level security oddziela dane poszczególnych szkół. EF Core, Npgsql i wersjonowane migracje SQL.",
+              "Wzorzec transactional outbox zasila trwałą kolejkę e-maili z ponowieniami i limitami wysyłki.",
+              "Logowanie przez Google w Supabase Auth, płatności przez Stripe Connect, wysyłka e-maili przez Resend.",
+              "Frontend: React 19, TypeScript, Vite i TanStack Query.",
+              "API w kontenerze Docker na Render, frontend na Cloudflare Pages, CI w GitHub Actions z testami integracyjnymi i codziennym sprawdzaniem działania usług.",
             ],
           },
           stack: [".NET 10", "ASP.NET Core", "EF Core", "PostgreSQL", "Supabase", "React", "TypeScript", "Stripe Connect", "Docker", "Cloudflare Pages", "GitHub Actions"],
@@ -404,7 +404,7 @@ export const content: Record<Locale, Content> = {
           degree: "Inżynier (studia I stopnia)",
           school: "Warszawska Wyższa Szkoła Informatyki",
           period: "2018 – 2022",
-          note: "W pierwszej siódemce studentów studiów I stopnia w roku 2019/2020, stypendysta.",
+          note: "Stypendysta; w roku akademickim 2019/2020 w gronie siedmiu najlepszych studentów studiów I stopnia.",
         },
       ],
       languagesHeading: "Języki",
@@ -416,12 +416,12 @@ export const content: Record<Locale, Content> = {
     },
     contact: {
       heading: "Porozmawiajmy",
-      body: "Interesują mnie role senior backend w .NET i chmurze. Najszybciej złapiesz mnie mailowo.",
+      body: "Chętnie porozmawiam o rolach senior backend w .NET i chmurze. Najszybciej skontaktujesz się ze mną mailowo.",
       email: "Napisz do mnie",
       copy: "Kopiuj adres",
       copied: "Skopiowano",
-      copyFailed: "Nie udało się skopiować. Zaznacz adres ręcznie.",
+      copyFailed: "Nie udało się skopiować adresu. Zaznacz go i skopiuj ręcznie.",
     },
-    footer: "Zbudowane w Astro, hostowane na Cloudflare Pages.",
+    footer: "Strona zbudowana w Astro i hostowana na Cloudflare Pages.",
   },
 };
