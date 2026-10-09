@@ -15,11 +15,6 @@ export interface Role {
   stack: string[];
 }
 
-export interface Principle {
-  title: string;
-  body: string;
-}
-
 export interface Project {
   name: string;
   summary: string;
@@ -34,7 +29,7 @@ export interface Project {
 
 export interface Content {
   meta: { title: string; description: string };
-  nav: { about: string; experience: string; projects: string; approach: string; skills: string; contact: string };
+  nav: { about: string; experience: string; projects: string; skills: string; contact: string };
   ui: {
     skip: string;
     navLabel: string;
@@ -43,13 +38,11 @@ export interface Content {
     themeToLight: string;
     themeToDark: string;
     present: string;
-    diagramLabel: string;
   };
   hero: { name: string; role: string; pitch: string; location: string };
   about: { heading: string; paragraphs: string[] };
   experience: { heading: string; forClient: string; roles: Role[] };
   projects: { heading: string; intro: string; items: Project[] };
-  approach: { heading: string; note: string; items: Principle[] };
   skills: { heading: string; groups: { name: string; items: string[] }[] };
   credentials: {
     heading: string;
@@ -116,7 +109,7 @@ export const content: Record<Locale, Content> = {
       description:
         "C#/.NET developer with 6+ years of commercial experience in microservices, messaging, Azure and high-traffic cloud systems. Based in Warsaw.",
     },
-    nav: { about: "About", experience: "Experience", projects: "Projects", approach: "How I build", skills: "Skills", contact: "Contact" },
+    nav: { about: "About", experience: "Experience", projects: "Projects", skills: "Skills", contact: "Contact" },
     ui: {
       skip: "Skip to content",
       navLabel: "Sections",
@@ -125,7 +118,6 @@ export const content: Record<Locale, Content> = {
       themeToLight: "Switch to light theme",
       themeToDark: "Switch to dark theme",
       present: "Present",
-      diagramLabel: "Animation: an API publishes messages to RabbitMQ, which delivers them to two consumers.",
     },
     hero: {
       name: "Adam Gajek",
@@ -239,28 +231,6 @@ export const content: Record<Locale, Content> = {
         },
       ],
     },
-    approach: {
-      heading: "How I build",
-      note: "Principles I apply to distributed systems, generalised from my work. Client specifics stay under NDA.",
-      items: [
-        {
-          title: "Messages arrive twice, late or out of order",
-          body: "So consumers are idempotent, retries are bounded, and failed messages land in a dead-letter queue that someone actually watches. RabbitMQ when routing matters; Kafka when the log and replay matter.",
-        },
-        {
-          title: "Storage follows the access pattern",
-          body: "SQL Server or PostgreSQL for transactional data, MongoDB for documents that change shape, Redis or HybridCache in front of hot reads with a clear invalidation rule. Entity Framework for the domain model, Dapper where a query needs full control.",
-        },
-        {
-          title: "Boundaries follow the domain",
-          body: "Services are cut along business capabilities, not along the org chart. Between microservices and a modular monolith I pick the one the team can operate well; splitting a module out later is cheaper than merging services back.",
-        },
-        {
-          title: "Every release goes the same way",
-          body: "Each service builds into a container, passes the same pipeline and deploys the same way, whether to AKS or App Service. A manual step in a release is the next thing to automate.",
-        },
-      ],
-    },
     skills: { heading: "Skills", groups: SKILLS_EN },
     credentials: {
       heading: "Certifications and education",
@@ -300,7 +270,7 @@ export const content: Record<Locale, Content> = {
       description:
         "Programista C#/.NET z ponad 6-letnim doświadczeniem komercyjnym: mikroserwisy, messaging, Azure i systemy chmurowe o dużym ruchu. Warszawa.",
     },
-    nav: { about: "O mnie", experience: "Doświadczenie", projects: "Projekty", approach: "Jak pracuję", skills: "Umiejętności", contact: "Kontakt" },
+    nav: { about: "O mnie", experience: "Doświadczenie", projects: "Projekty", skills: "Umiejętności", contact: "Kontakt" },
     ui: {
       skip: "Przejdź do treści",
       navLabel: "Sekcje",
@@ -309,7 +279,6 @@ export const content: Record<Locale, Content> = {
       themeToLight: "Włącz jasny motyw",
       themeToDark: "Włącz ciemny motyw",
       present: "obecnie",
-      diagramLabel: "Animacja: API publikuje wiadomości do RabbitMQ, który dostarcza je do dwóch konsumentów.",
     },
     hero: {
       name: "Adam Gajek",
@@ -420,28 +389,6 @@ export const content: Record<Locale, Content> = {
             ],
           },
           stack: [".NET 10", "ASP.NET Core", "EF Core", "PostgreSQL", "Supabase", "React", "TypeScript", "Stripe Connect", "Docker", "Cloudflare Pages", "GitHub Actions"],
-        },
-      ],
-    },
-    approach: {
-      heading: "Jak pracuję",
-      note: "Zasady, które stosuję w systemach rozproszonych, uogólnione z mojej pracy. Szczegóły klientów objęte są NDA.",
-      items: [
-        {
-          title: "Wiadomości przychodzą dwa razy, za późno albo w złej kolejności",
-          body: "Dlatego konsumenci są idempotentni, ponowienia mają limit, a nieudane wiadomości trafiają do dead-letter queue, którą ktoś naprawdę obserwuje. RabbitMQ, gdy liczy się routing; Kafka, gdy liczy się log i możliwość odtworzenia zdarzeń.",
-        },
-        {
-          title: "Bazę dobieram do wzorca dostępu",
-          body: "SQL Server lub PostgreSQL dla danych transakcyjnych, MongoDB dla dokumentów o zmiennej strukturze, Redis albo HybridCache przed często czytanymi danymi, z jasną regułą unieważniania. Entity Framework dla modelu domeny, Dapper tam, gdzie zapytanie wymaga pełnej kontroli.",
-        },
-        {
-          title: "Granice wyznacza domena",
-          body: "Serwisy dzielę według możliwości biznesowych, nie według struktury organizacji. Między mikroserwisami a modularnym monolitem wybieram to, co zespół jest w stanie dobrze utrzymać; wydzielenie modułu później jest tańsze niż ponowne łączenie serwisów.",
-        },
-        {
-          title: "Każde wydanie przechodzi tą samą drogą",
-          body: "Każdy serwis buduje się do kontenera, przechodzi ten sam pipeline i wdraża się tak samo, na AKS czy App Service. Ręczny krok w wydaniu to następna rzecz do zautomatyzowania.",
         },
       ],
     },

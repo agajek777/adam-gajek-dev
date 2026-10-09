@@ -1,7 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
 import Icon from "./Icon.astro";
-import MessageFlow from "./MessageFlow.astro";
 import { content, EMAIL, GITHUB, LINKEDIN, type Locale } from "../i18n/content";
 
 interface Props {
@@ -17,7 +16,6 @@ const sections = [
   { id: "about", label: t.nav.about },
   { id: "experience", label: t.nav.experience },
   { id: "projects", label: t.nav.projects },
-  { id: "approach", label: t.nav.approach },
   { id: "skills", label: t.nav.skills },
   { id: "contact", label: t.nav.contact },
 ];
@@ -25,7 +23,6 @@ const sections = [
 
 <Base locale={locale} title={t.meta.title} description={t.meta.description}>
   <a class="skip-link" href="#content">{t.ui.skip}</a>
-  <div class="spotlight" aria-hidden="true"></div>
 
   <div class="shell">
     <header class="intro">
@@ -34,11 +31,7 @@ const sections = [
         <p class="tagline" data-enter style="--i: 1">{t.hero.role}</p>
         <p class="pitch" data-enter style="--i: 2">{t.hero.pitch}</p>
 
-        <div class="flow-wrap" data-enter style="--i: 3">
-          <MessageFlow label={t.ui.diagramLabel} />
-        </div>
-
-        <nav class="toc" aria-label={t.ui.navLabel} data-enter style="--i: 4">
+        <nav class="toc" aria-label={t.ui.navLabel} data-enter style="--i: 3">
           <ul>
             {
               sections.map((s) => (
@@ -54,7 +47,7 @@ const sections = [
         </nav>
       </div>
 
-      <div class="intro-foot" data-enter style="--i: 5">
+      <div class="intro-foot" data-enter style="--i: 4">
         <ul class="socials">
           <li>
             <a href={GITHUB} rel="me noopener" target="_blank" aria-label="GitHub">
@@ -196,21 +189,6 @@ const sections = [
             </article>
           ))
         }
-      </section>
-
-      <section id="approach" class="section" aria-labelledby="approach-h">
-        <h2 id="approach-h" class="section-title">{t.approach.heading}</h2>
-        <p class="section-note">{t.approach.note}</p>
-        <div class="principles">
-          {
-            t.approach.items.map((item, i) => (
-              <article class="principle" data-reveal style={`--d: ${i * 80}ms`}>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </article>
-            ))
-          }
-        </div>
       </section>
 
       <section id="skills" class="section" aria-labelledby="skills-h">

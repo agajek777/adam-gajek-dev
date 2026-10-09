@@ -192,7 +192,7 @@ main {
     position: sticky;
     top: 0;
     height: 100dvh;
-    padding-block: 4.5rem;
+    padding-block: 6rem;
     justify-content: space-between;
   }
 
@@ -231,7 +231,7 @@ main {
 @media (min-width: 64rem) {
   .toc {
     display: block;
-    margin-top: 2.5rem;
+    margin-top: 4rem;
   }
 }
 
@@ -562,36 +562,6 @@ html:not(.js) .role::before {
   white-space: nowrap;
 }
 
-/* ---------- Approach ---------- */
-.principles {
-  display: grid;
-  gap: 2.25rem 2.5rem;
-}
-
-@media (min-width: 46rem) {
-  .principles {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-.principle {
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--line);
-}
-
-.principle h3 {
-  font-size: 1rem;
-  font-weight: 650;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-}
-
-.principle p {
-  margin-top: 0.625rem;
-  color: var(--ink-2);
-  font-size: 0.9375rem;
-}
-
 /* ---------- Skills & credentials ---------- */
 .skills {
   display: grid;
@@ -850,78 +820,6 @@ html:not(.js) .role::before {
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
-}
-
-/* ---------- Hero message flow ---------- */
-.flow-wrap {
-  margin-top: 2.25rem;
-  max-width: 22.5rem;
-}
-
-.flow {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-}
-
-.flow-wires path {
-  stroke: var(--line);
-  stroke-width: 1.5;
-}
-
-.flow-packets circle {
-  fill: var(--accent);
-}
-
-.flow-nodes rect {
-  fill: var(--surface);
-  stroke: var(--line);
-  stroke-width: 1;
-}
-
-.flow-broker rect {
-  stroke: var(--accent);
-  fill: color-mix(in srgb, var(--accent) 9%, var(--surface));
-}
-
-.flow-nodes text {
-  fill: var(--ink-2);
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 550;
-  text-anchor: middle;
-}
-
-.flow-broker text {
-  fill: var(--ink);
-  font-weight: 650;
-}
-
-/* ---------- Cursor spotlight (fine pointers only, set up by script) ---------- */
-.spotlight {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 0;
-  width: 44rem;
-  height: 44rem;
-  margin: -22rem 0 0 -22rem;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 11%, transparent), transparent);
-  opacity: 0;
-  transition: opacity 600ms ease;
-  will-change: transform;
-}
-
-.spotlight.is-on {
-  opacity: 1;
-}
-
-.shell {
-  position: relative;
-  z-index: 1;
 }
 
 /* ---------- Projects ---------- */

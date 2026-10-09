@@ -115,45 +115,6 @@ const revealObserver = new IntersectionObserver(
 );
 revealed.forEach((el) => revealObserver.observe(el));
 
-// Hero diagram: frozen mid-flight under reduced motion, paused while off screen.
-const flow = document.querySelector<SVGSVGElement>(".flow");
-if (flow) {
-  const freeze = () => {
-    flow.pauseAnimations();
-    flow.setCurrentTime(0.9);
-  };
-  if (reduceMotion.matches) freeze();
-  reduceMotion.addEventListener("change", () => (reduceMotion.matches ? freeze() : flow.unpauseAnimations()));
-  new IntersectionObserver(([e]) => {
-    if (reduceMotion.matches) return;
-    if (e.isIntersecting) flow.unpauseAnimations();
-    else flow.pauseAnimations();
-  }).observe(flow);
-}
-
-// Soft accent light that trails the cursor. Decorative; fine pointers only.
-const spotlight = document.querySelector<HTMLElement>(".spotlight");
-if (spotlight && finePointer.matches && !reduceMotion.matches) {
-  let x = 0;
-  let y = 0;
-  let frame = 0;
-  window.addEventListener(
-    "pointermove",
-    (e) => {
-      x = e.clientX;
-      y = e.clientY;
-      if (frame) return;
-      frame = requestAnimationFrame(() => {
-        frame = 0;
-        spotlight.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        spotlight.classList.add("is-on");
-      });
-    },
-    { passive: true },
-  );
-  document.documentElement.addEventListener("pointerleave", () => spotlight.classList.remove("is-on"));
-}
-
 // Primary CTAs lean slightly toward the cursor.
 if (finePointer.matches && !reduceMotion.matches) {
   const MAX_SHIFT = 6;
