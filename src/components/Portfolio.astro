@@ -1,0 +1,259 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "./Icon.astro";
+import { content, EMAIL, GITHUB, LINKEDIN, type Locale } from "../i18n/content";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = content[locale];
+const otherHref = locale === "en" ? "/pl/" : "/";
+const otherLang = locale === "en" ? "pl" : "en";
+
+const sections = [
+  { id: "about", label: t.nav.about },
+  { id: "experience", label: t.nav.experience },
+  { id: "approach", label: t.nav.approach },
+  { id: "skills", label: t.nav.skills },
+  { id: "contact", label: t.nav.contact },
+];
+---
+
+<Base locale={locale} title={t.meta.title} description={t.meta.description}>
+  <a class="skip-link" href="#content">{t.ui.skip}</a>
+
+  <div class="shell">
+    <header class="intro">
+      <div class="intro-main">
+        <h1 class="name" data-enter style="--i: 0">{t.hero.name}</h1>
+        <p class="tagline" data-enter style="--i: 1">{t.hero.role}</p>
+        <p class="pitch" data-enter style="--i: 2">{t.hero.pitch}</p>
+
+        <nav class="toc" aria-label={t.ui.navLabel} data-enter style="--i: 3">
+          <ul>
+            {
+              sections.map((s) => (
+                <li>
+                  <a href={`#${s.id}`} data-nav={s.id}>
+                    <span class="toc-line" aria-hidden="true" />
+                    <span>{s.label}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+
+      <div class="intro-foot" data-enter style="--i: 4">
+        <ul class="socials">
+          <li>
+            <a href={GITHUB} rel="me noopener" target="_blank" aria-label="GitHub">
+              <Icon name="github" />
+            </a>
+          </li>
+          <li>
+            <a href={LINKEDIN} rel="me noopener" target="_blank" aria-label="LinkedIn">
+              <Icon name="linkedin" />
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${EMAIL}`} aria-label={EMAIL}>
+              <Icon name="envelope" />
+            </a>
+          </li>
+        </ul>
+
+        <div class="controls">
+          <a class="control lang" href={otherHref} hreflang={otherLang} lang={otherLang} aria-label={t.ui.langLabel}>
+            {t.ui.langName}
+          </a>
+          <button
+            class="control theme-toggle"
+            type="button"
+            data-label-light={t.ui.themeToLight}
+            data-label-dark={t.ui.themeToDark}
+            aria-label={t.ui.themeToDark}
+          >
+            <Icon name="moon" class="icon icon-moon" />
+            <Icon name="sun" class="icon icon-sun" />
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <section id="about" class="section" aria-labelledby="about-h">
+        <h2 id="about-h" class="section-title">{t.about.heading}</h2>
+        <div class="prose">
+          {t.about.paragraphs.map((p) => <p>{p}</p>)}
+        </div>
+      </section>
+
+      <section id="experience" class="section" aria-labelledby="experience-h">
+        <h2 id="experience-h" class="section-title">{t.experience.heading}</h2>
+        <ol class="roles">
+          {
+            t.experience.roles.map((r) => (
+              <li class="role">
+                <p class="role-period">
+                  <time datetime={r.start}>{r.period.split(" – ")[0]}</time> –{" "}
+                  {r.end ? <time datetime={r.end}>{r.period.split(" – ")[1]}</time> : <span>{r.period.split(" – ")[1]}</span>}
+                </p>
+                <div class="role-body">
+                  <h3 class="role-title">
+                    {r.title}
+                    <span class="role-company">
+                      {r.company}
+                      {r.client && (
+                        <span class="role-client">
+                          {" "}
+                          {t.experience.forClient} {r.client}
+                        </span>
+                      )}
+                    </span>
+                  </h3>
+                  <ul class="role-points">
+                    {r.points.map((p) => (
+                      <li>{p}</li>
+                    ))}
+                  </ul>
+                  <ul class="tags" aria-label="Stack">
+                    {r.stack.map((s) => (
+                      <li>{s}</li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+
+      <section id="approach" class="section" aria-labelledby="approach-h">
+        <h2 id="approach-h" class="section-title">{t.approach.heading}</h2>
+        <p class="section-note">{t.approach.note}</p>
+        <div class="principles">
+          {
+            t.approach.items.map((item) => (
+              <article class="principle">
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section id="skills" class="section" aria-labelledby="skills-h">
+        <h2 id="skills-h" class="section-title">{t.skills.heading}</h2>
+        <dl class="skills">
+          {
+            t.skills.groups.map((g) => (
+              <div class="skill-row">
+                <dt>{g.name}</dt>
+                <dd>
+                  <ul class="tags">
+                    {g.items.map((s) => (
+                      <li>{s}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+
+        <h2 class="section-title section-title--sub">{t.credentials.heading}</h2>
+        <div class="credentials">
+          <div>
+            <h3 class="cred-title">{t.credentials.certsHeading}</h3>
+            <ul class="cred-list">
+              {
+                t.credentials.certs.map((c) => (
+                  <li>
+                    <span class="cred-name">{c.name}</span>
+                    <span class="cred-meta">{c.issuer}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div>
+            <h3 class="cred-title">{t.credentials.educationHeading}</h3>
+            <ul class="cred-list">
+              {
+                t.credentials.education.map((e) => (
+                  <li>
+                    <span class="cred-name">{e.degree}</span>
+                    <span class="cred-meta">
+                      {e.school}, {e.period}
+                    </span>
+                    {e.note && <span class="cred-note">{e.note}</span>}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div>
+            <h3 class="cred-title">{t.credentials.languagesHeading}</h3>
+            <ul class="cred-list">
+              {
+                t.credentials.languages.map((l) => (
+                  <li>
+                    <span class="cred-name">{l.name}</span>
+                    <span class="cred-meta">{l.level}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact" aria-labelledby="contact-h">
+        <h2 id="contact-h" class="contact-title">{t.contact.heading}</h2>
+        <p class="contact-body">{t.contact.body}</p>
+        <p class="contact-email">
+          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href={`mailto:${EMAIL}`}>
+            <Icon name="envelope" />
+            <span>{t.contact.email}</span>
+          </a>
+          <button
+            class="btn btn-secondary copy-email"
+            type="button"
+            data-email={EMAIL}
+            data-copied={t.contact.copied}
+            data-failed={t.contact.copyFailed}
+          >
+            <Icon name="copy" class="icon icon-copy" />
+            <Icon name="check" class="icon icon-check" />
+            <span class="copy-label">{t.contact.copy}</span>
+          </button>
+          <a class="btn btn-ghost" href={LINKEDIN} rel="me noopener" target="_blank">
+            <span>LinkedIn</span>
+            <Icon name="arrowUpRight" />
+          </a>
+          <a class="btn btn-ghost" href={GITHUB} rel="me noopener" target="_blank">
+            <span>GitHub</span>
+            <Icon name="arrowUpRight" />
+          </a>
+        </div>
+        <p class="copy-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <footer class="footer">
+        <p>© {new Date().getFullYear()} Adam Gajek. {t.footer}</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    import "../scripts/ui";
+  </script>
+</Base>

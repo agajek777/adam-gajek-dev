@@ -1,0 +1,23 @@
+{
+  "name": "adam-gajek-dev",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal portfolio of Adam Gajek, .NET developer",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "astro build && wrangler pages deploy dist --project-name adam-gajek --branch main"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "^5.3.0",
+    "@phosphor-icons/core": "^2.1.1",
+    "astro": "^7.3.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.149.0"
+  }
+}

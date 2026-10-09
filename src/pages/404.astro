@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base locale="en" title="Page not found | Adam Gajek" description="This page does not exist." path="/404" noindex>
+  <main class="shell not-found">
+    <h1 class="name">Page not found</h1>
+    <p class="pitch">This address doesn’t exist. The portfolio is one click away.</p>
+    <p class="actions">
+      <a class="btn btn-primary" href="/">Go to the portfolio</a>
+      <a class="btn btn-secondary" href="/pl/" lang="pl" hreflang="pl">Wersja polska</a>
+    </p>
+  </main>
+</Base>
+
+<style>
+  .not-found {
+    display: block;
+    padding-block: 8rem;
+  }
+</style>
