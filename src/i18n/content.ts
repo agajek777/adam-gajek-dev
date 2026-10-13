@@ -77,7 +77,7 @@ const SKILLS_EN = [
   { name: "Messaging", items: ["RabbitMQ", "Kafka"] },
   { name: "Cloud and delivery", items: ["Azure", "Docker", "Kubernetes", "CI/CD", "Azure DevOps"] },
   { name: "Architecture", items: ["Microservices", "Distributed systems", "Modular monolith"] },
-  { name: "AI development", items: ["Claude Code", "GitHub Copilot", "Codex"] },
+  { name: "AI", items: ["LLM integration", "Structured output", "Cloudflare Workers AI", "Claude Code", "GitHub Copilot", "Codex"] },
   { name: "Tools", items: ["Git", "GitHub", "GitLab", "Jira"] },
 ];
 
@@ -87,7 +87,7 @@ const SKILLS_PL = [
   { name: "Kolejki wiadomości", items: ["RabbitMQ", "Kafka"] },
   { name: "Chmura i wdrożenia", items: ["Azure", "Docker", "Kubernetes", "CI/CD", "Azure DevOps"] },
   { name: "Architektura", items: ["Mikroserwisy", "Systemy rozproszone", "Modularny monolit"] },
-  { name: "AI w programowaniu", items: ["Claude Code", "GitHub Copilot", "Codex"] },
+  { name: "AI", items: ["Integracja LLM", "Structured output", "Cloudflare Workers AI", "Claude Code", "GitHub Copilot", "Codex"] },
   { name: "Narzędzia", items: ["Git", "GitHub", "GitLab", "Jira"] },
 ];
 
@@ -105,9 +105,9 @@ export const GITHUB = "https://github.com/agajek777";
 export const content: Record<Locale, Content> = {
   en: {
     meta: {
-      title: "Adam Gajek, .NET Developer for Cloud and Distributed Systems",
+      title: "Adam Gajek, .NET Developer for Distributed Systems and AI",
       description:
-        "C#/.NET developer with 6+ years of commercial experience in microservices, messaging, Azure and high-traffic cloud systems. Based in Warsaw.",
+        "C#/.NET developer with 6+ years of commercial experience in microservices, messaging and Azure, now shipping AI features to production. Based in Warsaw.",
     },
     nav: { about: "About", experience: "Experience", projects: "Projects", skills: "Skills", contact: "Contact" },
     ui: {
@@ -121,9 +121,9 @@ export const content: Record<Locale, Content> = {
     },
     hero: {
       name: "Adam Gajek",
-      role: ".NET Developer, Cloud and Distributed Systems",
+      role: ".NET Developer, Distributed Systems and AI",
       pitch:
-        "I build .NET backends for distributed systems: microservices, messaging, data and the cloud infrastructure they run on.",
+        "I build .NET backends for distributed systems on Azure, and I put AI into production: my SaaS Studio runs an AI assistant I designed and built.",
       location: "Warsaw, Poland",
     },
     about: {
@@ -131,7 +131,7 @@ export const content: Record<Locale, Content> = {
       paragraphs: [
         "For more than six years I have built commercial software in very different settings: a microservice platform for industrial automation, a cloud system serving over 14.5 million views a month, distributed services for a North American logistics company, and the C++ billing system where I started.",
         "Most of my work sits behind the API. Service boundaries, message flows over RabbitMQ and Kafka, relational and document storage, caching, containers and the pipelines that ship them. I aim for systems that are easy to change and uneventful to run.",
-        "I use Claude Code, GitHub Copilot and Codex every day and hold Anthropic’s certifications in Claude Code and the Claude API. The tools make me faster; design decisions and code review stay with me. After hours I build Studio, my own SaaS for dance schools, from the database to production.",
+        "AI is the area I’m growing in fastest. In Studio, my own SaaS for dance schools, I built an AI assistant from scratch: a .NET endpoint over an LLM, grounded in the product’s documentation, with structured output, guardrails and integration tests. I use Claude Code, GitHub Copilot and Codex every day and hold Anthropic’s certifications in Claude Code and the Claude API. The tools make me faster; design decisions and code review stay with me.",
       ],
     },
     experience: {
@@ -195,13 +195,13 @@ export const content: Record<Locale, Content> = {
         {
           name: "Studio",
           summary:
-            "Free scheduling and booking software for dance schools and independent instructors. Schools publish a timetable, sell passes online and take bookings from one link.",
+            "Free scheduling and booking software for dance schools and independent instructors, with a built-in AI assistant. Schools publish a timetable, sell passes online and take bookings from one link.",
           status: "Live, built and run by me since 2026",
           url: "https://studio-app.click/en/",
           urlLabel: "Open studio-app.click",
           image: {
             src: "/projects/studio-en.webp",
-            alt: "Studio landing page: “Your dance school. All in one place.” next to a sample weekly class schedule.",
+            alt: "Studio landing page: “Your dance school. All in one place.”, a question field for the AI assistant with suggested questions, and a sample weekly class schedule.",
             width: 1800,
             height: 1025,
           },
@@ -214,6 +214,7 @@ export const content: Record<Locale, Content> = {
               "Partner classes with lead and follow limits, and booking with your own partner.",
               "Passes paid by card or BLIK through Stripe, with money going straight to the school.",
               "Team roles, attendance, refunds, audit log and CSV export. Available in Polish, English, German and French.",
+              "AI assistant on the website and in the app: answers questions about Studio and walks school staff through setup, with links straight to the right screen.",
             ],
           },
           engineering: {
@@ -222,12 +223,14 @@ export const content: Record<Locale, Content> = {
               "ASP.NET Core 10 API with ProblemDetails, rate limiting and OpenAPI; the TypeScript client types are generated from the contract.",
               "Multi-tenant PostgreSQL: row-level security keeps each school’s data separate, with EF Core, Npgsql and versioned SQL migrations.",
               "Transactional outbox feeding a durable email queue with retries and send limits.",
+              "AI assistant: ASP.NET Core endpoint over Cloudflare Workers AI (Gemma). Answers are grounded in the product docs and returned as schema-validated JSON; links come only from a role-filtered allowlist, never from the model.",
+              "Assistant guardrails: no access to school data, no stored conversations, rate limits per IP and per user, a daily budget with a graceful fallback, and 11 integration tests.",
               "Supabase Auth with Google sign-in, Stripe Connect for payments, Resend for email.",
               "React 19, TypeScript, Vite and TanStack Query on the front end.",
               "Dockerised API on Render, front end on Cloudflare Pages, GitHub Actions CI with integration tests and a daily health check.",
             ],
           },
-          stack: [".NET 10", "ASP.NET Core", "EF Core", "PostgreSQL", "Supabase", "React", "TypeScript", "Stripe Connect", "Docker", "Cloudflare Pages", "GitHub Actions"],
+          stack: [".NET 10", "ASP.NET Core", "EF Core", "PostgreSQL", "Workers AI", "Supabase", "React", "TypeScript", "Stripe Connect", "Docker", "Cloudflare Pages", "GitHub Actions"],
         },
       ],
     },
@@ -266,9 +269,9 @@ export const content: Record<Locale, Content> = {
 
   pl: {
     meta: {
-      title: "Adam Gajek – .NET Developer, chmura i systemy rozproszone",
+      title: "Adam Gajek – .NET Developer, systemy rozproszone i AI",
       description:
-        "Programista C#/.NET z ponad sześcioletnim doświadczeniem komercyjnym. Mikroserwisy, kolejki wiadomości, Azure i systemy chmurowe o dużym ruchu. Warszawa.",
+        "Programista C#/.NET z ponad sześcioletnim doświadczeniem komercyjnym w mikroserwisach, kolejkach wiadomości i Azure, który wdraża funkcje AI na produkcję. Warszawa.",
     },
     nav: { about: "O mnie", experience: "Doświadczenie", projects: "Projekty", skills: "Umiejętności", contact: "Kontakt" },
     ui: {
@@ -282,9 +285,9 @@ export const content: Record<Locale, Content> = {
     },
     hero: {
       name: "Adam Gajek",
-      role: ".NET Developer – chmura i systemy rozproszone",
+      role: ".NET Developer – systemy rozproszone i AI",
       pitch:
-        "Tworzę backend w .NET dla systemów rozproszonych: mikroserwisy, komunikację przez kolejki, warstwę danych i infrastrukturę chmurową, na której to wszystko działa.",
+        "Tworzę backend w .NET dla systemów rozproszonych w Azure i wdrażam AI na produkcję: w moim SaaS-ie Studio działa asystent AI, którego zaprojektowałem i zbudowałem.",
       location: "Warszawa",
     },
     about: {
@@ -292,7 +295,7 @@ export const content: Record<Locale, Content> = {
       paragraphs: [
         "Od ponad sześciu lat zawodowo tworzę oprogramowanie w bardzo różnych projektach. Rozwijam platformę mikroserwisową dla automatyki przemysłowej, pracowałem też nad systemem chmurowym z ponad 14,5 mln wyświetleń miesięcznie i nad rozproszonymi usługami dla północnoamerykańskiej firmy logistycznej. Zaczynałem od systemu bilingowego w C++.",
         "Zajmuję się głównie tym, co dzieje się za API: granicami serwisów, przepływem wiadomości przez RabbitMQ i Kafkę, bazami relacyjnymi i dokumentowymi, cache’em, kontenerami oraz pipeline’ami, które to wszystko wdrażają. Stawiam na systemy, które łatwo rozwijać i które działają na produkcji bez niespodzianek.",
-        "Na co dzień pracuję z Claude Code, GitHub Copilotem i Codexem, mam też certyfikaty Anthropic z Claude Code i Claude API. Te narzędzia przyspieszają moją pracę, ale decyzje projektowe i code review należą do mnie. Po godzinach rozwijam Studio, własny SaaS dla szkół tańca, od bazy danych aż po produkcję.",
+        "AI to obszar, w którym rozwijam się najszybciej. W Studio, moim własnym SaaS-ie dla szkół tańca, zbudowałem od zera asystenta AI: endpoint w .NET nad modelem językowym, oparty na dokumentacji produktu, ze ściśle określonym formatem odpowiedzi, zabezpieczeniami i testami integracyjnymi. Na co dzień pracuję z Claude Code, GitHub Copilotem i Codexem, mam też certyfikaty Anthropic z Claude Code i Claude API. Te narzędzia przyspieszają moją pracę, ale decyzje projektowe i code review należą do mnie.",
       ],
     },
     experience: {
@@ -356,13 +359,13 @@ export const content: Record<Locale, Content> = {
         {
           name: "Studio",
           summary:
-            "Bezpłatna aplikacja do grafiku i zapisów dla szkół tańca i samodzielnych instruktorów. Szkoła publikuje grafik, sprzedaje karnety online i przyjmuje zapisy przez jeden link.",
+            "Bezpłatna aplikacja do grafiku i zapisów dla szkół tańca i samodzielnych instruktorów, z wbudowanym asystentem AI. Szkoła publikuje grafik, sprzedaje karnety online i przyjmuje zapisy przez jeden link.",
           status: "Działa na produkcji, rozwijam go od 2026 roku",
           url: "https://studio-app.click/",
           urlLabel: "Otwórz studio-app.click",
           image: {
             src: "/projects/studio-pl.webp",
-            alt: "Strona główna Studio: „Zarządzaj szkołą tańca. W jednym miejscu.” obok przykładowego grafiku zajęć.",
+            alt: "Strona główna Studio: „Zarządzaj szkołą tańca. W jednym miejscu.”, pole pytania do asystenta AI z podpowiedziami i przykładowy grafik zajęć.",
             width: 1800,
             height: 1025,
           },
@@ -375,6 +378,7 @@ export const content: Record<Locale, Content> = {
               "Zajęcia w parach z limitami ról prowadzących i prowadzonych oraz możliwością zapisu z własnym partnerem.",
               "Karnety płatne kartą lub BLIK-iem przez Stripe; pieniądze trafiają bezpośrednio do szkoły.",
               "Role w zespole, lista obecności, zwroty, dziennik zdarzeń i eksport do CSV. Interfejs w czterech językach: polskim, angielskim, niemieckim i francuskim.",
+              "Asystent AI na stronie i w aplikacji: odpowiada na pytania o Studio i prowadzi zespół szkoły przez konfigurację, z linkami prosto do właściwego ekranu.",
             ],
           },
           engineering: {
@@ -383,12 +387,14 @@ export const content: Record<Locale, Content> = {
               "API w ASP.NET Core 10 z ProblemDetails, rate limitingiem i OpenAPI; typy TypeScript dla frontendu są generowane z kontraktu.",
               "PostgreSQL w modelu multi-tenant: row-level security oddziela dane poszczególnych szkół. EF Core, Npgsql i wersjonowane migracje SQL.",
               "Wzorzec transactional outbox zasila trwałą kolejkę e-maili z ponowieniami i limitami wysyłki.",
+              "Asystent AI: endpoint w ASP.NET Core nad Cloudflare Workers AI (Gemma). Odpowiedzi opierają się na dokumentacji produktu i wracają jako JSON zgodny ze schematem; linki pochodzą wyłącznie z listy dozwolonych miejsc filtrowanej rolą, nigdy z modelu.",
+              "Zabezpieczenia asystenta: brak dostępu do danych szkoły, brak zapisu rozmów, limity zapytań na IP i na użytkownika, dzienny budżet z odpowiedzią awaryjną oraz 11 testów integracyjnych.",
               "Logowanie przez Google w Supabase Auth, płatności przez Stripe Connect, wysyłka e-maili przez Resend.",
               "Frontend: React 19, TypeScript, Vite i TanStack Query.",
               "API w kontenerze Docker na Render, frontend na Cloudflare Pages, CI w GitHub Actions z testami integracyjnymi i codziennym sprawdzaniem działania usług.",
             ],
           },
-          stack: [".NET 10", "ASP.NET Core", "EF Core", "PostgreSQL", "Supabase", "React", "TypeScript", "Stripe Connect", "Docker", "Cloudflare Pages", "GitHub Actions"],
+          stack: [".NET 10", "ASP.NET Core", "EF Core", "PostgreSQL", "Workers AI", "Supabase", "React", "TypeScript", "Stripe Connect", "Docker", "Cloudflare Pages", "GitHub Actions"],
         },
       ],
     },

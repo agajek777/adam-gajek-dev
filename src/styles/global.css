@@ -215,6 +215,7 @@ main {
 }
 
 .tagline {
+  text-wrap: balance;
   margin-top: 0.875rem;
   font-size: 1.125rem;
   font-weight: 550;
