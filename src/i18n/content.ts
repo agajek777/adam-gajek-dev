@@ -123,7 +123,7 @@ export const content: Record<Locale, Content> = {
       name: "Adam Gajek",
       role: ".NET Developer, Distributed Systems and AI",
       pitch:
-        "I build .NET backends for distributed systems: microservices, messaging, data and the cloud infrastructure they run on. More and more, also AI features in production.",
+        "I build .NET backends for distributed systems. I use AI every day and keep growing in it, from tools that speed up my work to integrating AI into applications.",
       location: "Warsaw, Poland",
     },
     about: {
@@ -287,7 +287,7 @@ export const content: Record<Locale, Content> = {
       name: "Adam Gajek",
       role: ".NET Developer – systemy rozproszone i AI",
       pitch:
-        "Tworzę backend w .NET dla systemów rozproszonych: mikroserwisy, komunikację przez kolejki, warstwę danych i infrastrukturę chmurową, na której to wszystko działa. Coraz częściej także funkcje AI na produkcji.",
+        "Tworzę backend w .NET dla systemów rozproszonych. Na co dzień pracuję z AI i rozwijam się w tym obszarze: od narzędzi, które przyspieszają moją pracę, po integrację AI w aplikacjach.",
       location: "Warszawa",
     },
     about: {
