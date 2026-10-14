@@ -144,7 +144,8 @@ export const content: Record<Locale, Content> = {
           company: "Alten",
           client: "Emerson",
           points: [
-            "Develop and maintain a microservice-oriented system for the industrial automation domain on modern .NET, currently .NET 10.",
+            "Develop and maintain a microservice-oriented system for the industrial automation domain on modern .NET, currently .NET 10, designed with Domain-Driven Design (DDD).",
+            "Took part in rewriting legacy parts of the system, re-implementing core functionality from the ground up.",
             "Work across relational and NoSQL persistence, messaging between services, containerisation, source control and automated delivery pipelines.",
           ],
           stack: STACK.alten,
@@ -298,7 +299,8 @@ export const content: Record<Locale, Content> = {
           company: "Alten",
           client: "Emerson",
           points: [
-            "Rozwijam i utrzymuję system oparty na mikroserwisach dla branży automatyki przemysłowej, napisany w nowoczesnym .NET (obecnie .NET 10).",
+            "Rozwijam i utrzymuję system oparty na mikroserwisach dla branży automatyki przemysłowej, napisany w nowoczesnym .NET (obecnie .NET 10) i zaprojektowany zgodnie z Domain-Driven Design (DDD).",
+            "Brałem udział w przepisaniu legacy części systemu – kluczowe funkcje przepisywałem od podstaw.",
             "Na co dzień pracuję z bazami relacyjnymi i NoSQL, komunikacją między serwisami, kontenerami, systemem kontroli wersji i automatycznymi pipeline’ami CI/CD.",
           ],
           stack: STACK.alten,

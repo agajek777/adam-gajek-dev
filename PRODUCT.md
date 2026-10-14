@@ -42,7 +42,7 @@ Name: Adam Gajek. Title used in CV: ".NET Developer | Cloud & Distributed System
 
 Source of truth: `C:/Users/Adam/Documents/Adam_Gajek_CV.pdf`.
 
-- Alten / Emerson, .NET Developer, Sep 2022 to present: microservice-oriented industrial automation system; C#, .NET 10, EF, MongoDB, SQL Server, PostgreSQL, RabbitMQ, IdentityServer, Docker, Azure DevOps CI/CD, Angular.
+- Alten / Emerson, .NET Developer, Sep 2022 to present: microservice-oriented industrial automation system designed with Domain-Driven Design (DDD); took part in rewriting legacy parts of the system, re-implementing core functionality from scratch; C#, .NET 10, EF, MongoDB, SQL Server, PostgreSQL, RabbitMQ, IdentityServer, Docker, Azure DevOps CI/CD, Angular.
 - C.H. Robinson, Software Engineer .NET, Apr 2021 to Sep 2022: high-traffic cloud system, 14.5M+ views/month; cloud microservice distributed systems, North American team; C#, .NET, Kafka, SQL Server, Azure SQL, Azure AKS, ACR, App Service, Redis, Docker, ServiceStack, React.
 - Accenture, Junior C++ Developer, Dec 2019 to Oct 2020: billing system; C++, Red Hat Linux, GitLab, Jira, Java.
 - MEng 2022 to 2024 and BEng 2018 to 2022, Warsaw School of Computer Science; top 7 student 2019/2020, scholarship.
