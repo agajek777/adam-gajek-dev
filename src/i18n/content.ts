@@ -66,8 +66,7 @@ export interface Content {
 
 const STACK = {
   alten: ["C#", ".NET 10", "Entity Framework", "MongoDB", "SQL Server", "PostgreSQL", "RabbitMQ", "IdentityServer", "Docker", "Azure DevOps", "Angular"],
-  youriteams: [".NET", "C#", "Azure AKS", "ACR", "Azure SQL", "App Service", "Redis", "Docker"],
-  chr: ["C#", ".NET", "Kafka", "SQL Server", "Azure", "ServiceStack", "React"],
+  chr: ["C#", ".NET", "Kafka", "SQL Server", "Azure SQL", "Azure AKS", "ACR", "App Service", "Redis", "Docker", "ServiceStack", "React"],
   accenture: ["C++", "Red Hat Linux", "GitLab", "Jira", "Java"],
 };
 
@@ -129,7 +128,7 @@ export const content: Record<Locale, Content> = {
     about: {
       heading: "About",
       paragraphs: [
-        "For more than six years I have built commercial software in very different settings: a microservice platform for industrial automation, a cloud system serving over 14.5 million views a month, distributed services for a North American logistics company, and the C++ billing system where I started.",
+        "For more than six years I have built commercial software in very different settings: a microservice platform for industrial automation, high-traffic cloud services serving over 14.5 million views a month for a North American logistics company, and the C++ billing system where I started.",
         "Most of my work sits behind the API. Service boundaries, message flows over RabbitMQ and Kafka, relational and document storage, caching, containers and the pipelines that ship them. I aim for systems that are easy to change and uneventful to run.",
         "AI is the area I’m growing in fastest. In Studio, my own SaaS for dance schools, I built an AI assistant from scratch: a .NET endpoint over an LLM, grounded in the product’s documentation, with structured output, guardrails and integration tests. I use Claude Code, GitHub Copilot and Codex every day and hold Anthropic’s certifications in Claude Code and the Claude API. The tools make me faster; design decisions and code review stay with me.",
       ],
@@ -151,25 +150,15 @@ export const content: Record<Locale, Content> = {
           stack: STACK.alten,
         },
         {
-          period: "Jan 2025 – Nov 2025",
-          start: "2025-01",
-          end: "2025-11",
-          title: ".NET Developer",
-          company: "YourITeams",
-          points: [
-            "Developed a high-traffic cloud system serving more than 14.5 million views per month.",
-            "Worked in an Azure environment with Kubernetes (AKS), a container registry, App Service hosting, Azure SQL and Redis caching.",
-          ],
-          stack: STACK.youriteams,
-        },
-        {
           period: "Apr 2021 – Sep 2022",
           start: "2021-04",
           end: "2022-09",
           title: "Software Engineer .NET",
           company: "C.H. Robinson",
           points: [
+            "Developed a high-traffic cloud system serving more than 14.5 million views per month.",
             "Built new solutions for cloud-based, microservice-oriented distributed systems, with Kafka for event streaming.",
+            "Worked in an Azure environment with Kubernetes (AKS), a container registry, App Service hosting, Azure SQL and Redis caching.",
             "Worked day to day with a North American engineering team in an international environment.",
           ],
           stack: STACK.chr,
@@ -293,7 +282,7 @@ export const content: Record<Locale, Content> = {
     about: {
       heading: "O mnie",
       paragraphs: [
-        "Od ponad sześciu lat zawodowo tworzę oprogramowanie w bardzo różnych projektach. Rozwijam platformę mikroserwisową dla automatyki przemysłowej, pracowałem też nad systemem chmurowym z ponad 14,5 mln wyświetleń miesięcznie i nad rozproszonymi usługami dla północnoamerykańskiej firmy logistycznej. Zaczynałem od systemu bilingowego w C++.",
+        "Od ponad sześciu lat zawodowo tworzę oprogramowanie w bardzo różnych projektach. Rozwijam platformę mikroserwisową dla automatyki przemysłowej, a wcześniej pracowałem nad chmurowymi usługami o dużym ruchu (ponad 14,5 mln wyświetleń miesięcznie) dla północnoamerykańskiej firmy logistycznej. Zaczynałem od systemu bilingowego w C++.",
         "Zajmuję się głównie tym, co dzieje się za API: granicami serwisów, przepływem wiadomości przez RabbitMQ i Kafkę, bazami relacyjnymi i dokumentowymi, cache’em, kontenerami oraz pipeline’ami, które to wszystko wdrażają. Stawiam na systemy, które łatwo rozwijać i które działają na produkcji bez niespodzianek.",
         "AI to obszar, w którym rozwijam się najszybciej. W Studio, moim własnym SaaS-ie dla szkół tańca, zbudowałem od zera asystenta AI: endpoint w .NET nad modelem językowym, oparty na dokumentacji produktu, ze ściśle określonym formatem odpowiedzi, zabezpieczeniami i testami integracyjnymi. Na co dzień pracuję z Claude Code, GitHub Copilotem i Codexem, mam też certyfikaty Anthropic z Claude Code i Claude API. Te narzędzia przyspieszają moją pracę, ale decyzje projektowe i code review należą do mnie.",
       ],
@@ -315,25 +304,15 @@ export const content: Record<Locale, Content> = {
           stack: STACK.alten,
         },
         {
-          period: "sty 2025 – lis 2025",
-          start: "2025-01",
-          end: "2025-11",
-          title: ".NET Developer",
-          company: "YourITeams",
-          points: [
-            "Rozwijałem system chmurowy o dużym ruchu, który obsługuje ponad 14,5 mln wyświetleń miesięcznie.",
-            "Pracowałem w środowisku Azure: Kubernetes (AKS), Azure Container Registry, App Service, Azure SQL i Redis jako cache.",
-          ],
-          stack: STACK.youriteams,
-        },
-        {
           period: "kwi 2021 – wrz 2022",
           start: "2021-04",
           end: "2022-09",
           title: "Software Engineer .NET",
           company: "C.H. Robinson",
           points: [
+            "Rozwijałem system chmurowy o dużym ruchu, który obsługuje ponad 14,5 mln wyświetleń miesięcznie.",
             "Tworzyłem nowe rozwiązania w chmurowych systemach rozproszonych opartych na mikroserwisach, z Kafką do strumieniowania zdarzeń.",
+            "Pracowałem w środowisku Azure: Kubernetes (AKS), Azure Container Registry, App Service, Azure SQL i Redis jako cache.",
             "Na co dzień pracowałem w międzynarodowym zespole, razem z inżynierami z Ameryki Północnej.",
           ],
           stack: STACK.chr,

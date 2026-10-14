@@ -20,7 +20,7 @@ Personal portfolio for Adam Gajek, .NET developer. It presents his experience, t
 
 ## Positioning
 
-6+ years of commercial work across distinctly different distributed-systems contexts: microservice-based industrial automation (Emerson, via Alten), a high-traffic Azure system at 14.5M+ views per month (YourITeams), cloud microservices with Kafka for a North American team (C.H. Robinson), and a C++ billing system (Accenture). Backend depth (messaging, SQL and NoSQL, caching, containers, CI/CD) plus current use of AI development tools (Claude Code, Copilot, Codex) with Anthropic certifications.
+6+ years of commercial work across distinctly different distributed-systems contexts: microservice-based industrial automation (Emerson, via Alten), a high-traffic Azure system at 14.5M+ views per month with Kafka-based microservices for a North American team (C.H. Robinson), and a C++ billing system (Accenture). Backend depth (messaging, SQL and NoSQL, caching, containers, CI/CD) plus current use of AI development tools (Claude Code, Copilot, Codex) with Anthropic certifications.
 
 ## Operating Context
 
@@ -43,8 +43,7 @@ Name: Adam Gajek. Title used in CV: ".NET Developer | Cloud & Distributed System
 Source of truth: `C:/Users/Adam/Documents/Adam_Gajek_CV.pdf`.
 
 - Alten / Emerson, .NET Developer, Sep 2022 to present: microservice-oriented industrial automation system; C#, .NET 10, EF, MongoDB, SQL Server, PostgreSQL, RabbitMQ, IdentityServer, Docker, Azure DevOps CI/CD, Angular.
-- YourITeams, .NET Developer, Jan 2025 to Nov 2025 (overlaps with Alten): high-traffic cloud system, 14.5M+ views/month; .NET, Azure AKS, ACR, Azure SQL, App Service, Redis, Docker.
-- C.H. Robinson, Software Engineer .NET, Apr 2021 to Sep 2022: cloud microservice distributed systems, North American team; C#, Kafka, SQL Server, Azure, ServiceStack, React.
+- C.H. Robinson, Software Engineer .NET, Apr 2021 to Sep 2022: high-traffic cloud system, 14.5M+ views/month; cloud microservice distributed systems, North American team; C#, .NET, Kafka, SQL Server, Azure SQL, Azure AKS, ACR, App Service, Redis, Docker, ServiceStack, React.
 - Accenture, Junior C++ Developer, Dec 2019 to Oct 2020: billing system; C++, Red Hat Linux, GitLab, Jira, Java.
 - MEng 2022 to 2024 and BEng 2018 to 2022, Warsaw School of Computer Science; top 7 student 2019/2020, scholarship.
 - Certifications: Azure Fundamentals, Azure Developer Associate, Anthropic Claude Code in Action, Anthropic Building with the Claude API.
